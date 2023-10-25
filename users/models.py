@@ -5,7 +5,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=150, unique=True, null=False)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
-
+    
+    groups = models.ManyToManyField(Group, related_name="user_groups")
+    user_permissions = models.ManyToManyField(Permission, related_name="user_permissions")
     is_active = models.BooleanField(default=True)
     
     EMAIL_FIELD = "email"
