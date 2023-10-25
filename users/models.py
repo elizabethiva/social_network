@@ -6,7 +6,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
     
-    # Добавьте related_name к полям groups и user_permissions
+
     groups = models.ManyToManyField(Group, related_name="user_groups")
     user_permissions = models.ManyToManyField(Permission, related_name="user_permissions")
 
